@@ -1,47 +1,42 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from "react-native";
+import { initialWindowMetrics } from "react-native-safe-area-context";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // Handle the login functionality here
     console.log("Logging in with:", email, password);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
+      
+      {/* Instructional Message */}
+      <Text style={styles.instruction}>
+        Please add your email address and password
+      </Text>
 
-      {/* Email Input */}
       <TextInput
         style={styles.input}
         placeholder="Email"
         placeholderTextColor="#888"
         value={email}
-        onChangeText={(text) => setEmail(text)}
+        onChangeText={setEmail}
         keyboardType="email-address"
       />
-
-      {/* Password Input */}
       <TextInput
         style={styles.input}
         placeholder="Password"
         placeholderTextColor="#888"
         value={password}
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={setPassword}
         secureTextEntry
       />
-
-      {/* Login Button */}
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-
-      {/* Sign-up Prompt */}
-      <TouchableOpacity>
-        <Text style={styles.signupText}>Don't have an account? Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -53,13 +48,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    backgroundColor: "#f4f6fc", // Light background color
+    backgroundColor: "#f4f6fc",
   },
   title: {
     fontSize: 32,
     fontWeight: "bold",
     color: "#333",
-    marginBottom: 30,
+    marginBottom: 20,
+    fontStyle: "italic"
+  },
+  instruction: {
+    fontSize: 16,
+    color: "#666",
+    textAlign: "center",
+    marginBottom: 20,
   },
   input: {
     width: "100%",
@@ -85,9 +87,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  signupText: {
-    color: "#6C6EF5",
-    fontSize: 16,
-    textAlign: "center",
-  },
 });
+
