@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
  import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+=======
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+>>>>>>> 058655428c820fd6b0319cb26809cfb2a37aa661
 
 const GetStarted = ({ navigation }) => {
   return (
