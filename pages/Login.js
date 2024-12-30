@@ -1,65 +1,73 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from "react-native";
-import { initialWindowMetrics } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     console.log("Logging in with:", email, password);
+    navigation.navigate("UserDashboard");
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      
-      {/* Instructional Message */}
-      <Text style={styles.instruction}>
-        Please add your email address and password
-      </Text>
+    <LinearGradient
+      colors={["#4A90E2", "#9013FE"]}
+      style={styles.gradient}
+    >
+      <View style={styles.container}>
+        <Text style={styles.title}>Welcome Back</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        placeholderTextColor="#888"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor="#888"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-    </View>
+        <Text style={styles.instruction}>
+          Please add your email address and password
+        </Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#888"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#888"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    backgroundColor: "#f4f6fc",
   },
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "#333",
+    color: "#fff",
     marginBottom: 20,
-    fontStyle: "italic"
   },
   instruction: {
     fontSize: 16,
-    color: "#666",
+    color: "#f8f8f8",
     textAlign: "center",
     marginBottom: 20,
   },
@@ -76,7 +84,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    backgroundColor: "#6C6EF5",
+    backgroundColor: "#333",
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -87,9 +95,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-<<<<<<< HEAD
 });
-=======
-});
-
->>>>>>> 058655428c820fd6b0319cb26809cfb2a37aa661
